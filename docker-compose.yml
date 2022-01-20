@@ -1,0 +1,28 @@
+version: "3.3"
+
+
+networks:
+  default:
+    external:
+      name: reverse_proxy_admin
+
+services:
+  website:
+    image: registry.siroz.ovh/fuzati:latest
+    restart: always
+    container_name: befk
+    labels:
+      - "traefik.backend=befk"
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Host:befk.ch,www.befk.ch"
+      - "traefik.docker.network=reverse_proxy_admin"
+
+
+# git clone https://github.com/SiropOps/ch.portfolio.git
+# cd ch.portfolio
+# docker run -i -t --rm=true -v ~/:/data node:14.15 /bin/bash
+# cd /data/ch.portfolio/ &&  npm install && npm run build --prod
+# exit
+# docker image build -t registry.siroz.ovh/fuzati .
+# docker-compose up -d
+# cd && sudo rm -rf ch.portfolio
