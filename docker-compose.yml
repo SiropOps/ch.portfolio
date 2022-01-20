@@ -10,11 +10,11 @@ services:
   website:
     image: registry.siroz.ovh/fuzati:latest
     restart: always
-    container_name: befk
+    container_name: fuzati
     labels:
-      - "traefik.backend=befk"
+      - "traefik.backend=fuzati"
       - "traefik.port=80"
-      - "traefik.frontend.rule=Host:befk.ch,www.befk.ch"
+      - "traefik.frontend.rule=Host:portfolio.befk.ch"
       - "traefik.docker.network=reverse_proxy_admin"
 
 
