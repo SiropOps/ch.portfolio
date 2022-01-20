@@ -68,7 +68,7 @@ export class SkillComponent implements AfterViewInit, OnInit {
             "category": "C4",
             "power": 2,
             "categoryLabel": "Débutant",
-            "axisLabel": "Établir des diagnostics de situation, construire, mener et <br/>évaluer des projets d’intervention et des actions en se basant <br/>sur des connaissances scientifiques, méthodologiques et des savoirs d’action.",
+            "axisLabel": "Établir des diagnostics de situation, <br/>construire, mener et <br/>évaluer des projets d’intervention et <br/>des actions en se basant <br/>sur des connaissances scientifiques, <br/>méthodologiques et des savoirs d’action.",
             "why": "<p>J’ai remplacé un collègue pour son cours d’escalade « jeune et bloc »<sup>1</sup>. Sur les 6 adolescents présents, 3 ont commencé à ne plus réaliser les exercices que je leur avais présentés. Ils ont entrepris à courir sur les matelas, faire du bruit et se chamailler. J’ai établi ce diagnostic :</p><ul><li>L’activité proposé ne leur convenait pas, ou était devenue monotone.</li><li>Leurs conduites dérangeaient les autres clients et clientes dans la salle.</li><li>Malgré plusieurs rappels des règles et suggestions de nouveaux exercices, leurs attitudes n’ont pas changé. J’ai ressenti qu’en filigrane, la question pouvait se poser de mon professionnalisme à faire face à cette situation.</li></ul><p>Après ce diagnostic, j’ai décidé d’élaborer un « projet » d’intervention pour les cours à venir. Pour avoir l’adhésion des jeunes dans le cours, il fallait que je sache ce qui les motivait dans la grimpe et qu’est-ce que je pouvais leur apporter dans ce cours.</p><p>La leçon suivante, j’ai organisé un échauffement avec 5 postes d’exercices physiques et 1 poste dédié à la réflexion sur leurs envies pour les prochains cours. Avant de commencer, je leur ai expliqué les consignes et leur ai également donné quelques pistes de questionnement pour faciliter l’enclenchement de leurs réflexions. Inclure ce poste dans l’échauffement a bien marché, car il pouvait à la fois se reposer en réfléchissant sans rester « passif » avec le risque de déranger les autres. Passer par l’écrit permet de garder une base concrète des envies et de s’y référer au besoin. À la fin de l’échauffement, tous ensemble nous avons repris les souhaits de chacun et avons ainsi développé la séance et les futures cours à venir.</p><p>J’ai constaté que la dynamique a évolué dans la leçon du jour et dans celles qui ont suivi. Les jeunes avaient plus de volonté pour grimper et progresser, chacun dans son niveau et à son rythme.</p><p>J’estime être encore débutant, car il me manque encore des connaissances scientifiques pour réussir à analyser des situations plus complexes et avoir les outils adéquats pour y répondre.</p><p><sup>1</sup> Cours de grimpe proposé par la salle Vertic-Halle à des jeunes de 11 et 14 ans pour la pratique du bloc. Le bloc est une discipline de l’escalade consistant à gravir des murs d’une hauteur de 4 m maximum, la chute étant protégée par des matelas au sol.</p>"
           },
           {
@@ -89,7 +89,7 @@ export class SkillComponent implements AfterViewInit, OnInit {
             "category": "C7",
             "power": 2,
             "categoryLabel": "Débutant",
-            "axisLabel": "Organiser, coordonner le travail en équipe et en réseau, et <br/>collaborer dans des logiques d’interprofessionnalité et <br/>d’interdisciplinarité.",
+            "axisLabel": "Organiser, coordonner <br/>le travail en équipe et <br/>en réseau, et <br/>collaborer dans <br/>des logiques <br/>d’interprofessionnalité et <br/>d’interdisciplinarité.",
             "why": "<p>Comme vendeur, j’ai souvent dû organiser et coordonner notre travail avec l’équipe de l’atelier afin de répondre aux demandes expresses de clients. En pleine saison d’hiver, certains•es clients•es voulaient ressortir du magasin avec leurs de skis et chaussures de randonnée fraichement achetée sous le bras. Cependant en amont, il fallait réussir à installer les fixations sur les skis, les régler avec les chaussures que je thermoformais en même temps, monter et tailler les peaux. Dans mon métier d’ouvreur à Vertic-Halle, nous travaillions toujours en binôme pour réaliser une zone de bloc. Après avoir démonté toutes les prises, il fallait recréer les nouveaux passages, les tester et les coter. L’organisation, la négociation et la coordination étaient constantes. Entre nous, mais parfois avec des moniteurs•trices pour leurs cours ou des clients.</p><p>J’ai certainement développé certaines compétences empiriques dans mes stages d’ASE et mes diverses activités me permettant de collaborer avec d’autres professionnels•les. J’estime pourtant être débutant, car il me manque les connaissances théoriques, et surtout les logiques d’interprofessionnalité et d’interdisciplinarité avec les professions qui gravitent autour du domaine social.</p>"
           },
           {
@@ -109,7 +109,8 @@ export class SkillComponent implements AfterViewInit, OnInit {
         categoryAxis.renderer.minGridDistance = 60;
         categoryAxis.renderer.labels.template.location = 0.5;
         categoryAxis.renderer.grid.template.strokeOpacity = 0.08;
-        categoryAxis.tooltipHTML = '{axisLabel}';
+        if (categoryAxis.tooltip)
+          categoryAxis.tooltip.html = '{axisLabel}';
 
         const valueAxis = this.skillTypeChart.yAxes.push(new am4charts.ValueAxis<any>());
         valueAxis.min = 0;
@@ -200,7 +201,8 @@ export class SkillComponent implements AfterViewInit, OnInit {
         categoryAxis.renderer.minGridDistance = 60;
         categoryAxis.renderer.labels.template.location = 0.5;
         categoryAxis.renderer.grid.template.strokeOpacity = 0.08;
-        categoryAxis.tooltipHTML = '{axisLabel}';
+        if (categoryAxis.tooltip)
+          categoryAxis.tooltip.html = '{axisLabel}';
 
         const valueAxis = this.skillAcademyTypeChart.yAxes.push(new am4charts.ValueAxis<any>());
         valueAxis.min = 0;
