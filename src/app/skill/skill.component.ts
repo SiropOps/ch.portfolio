@@ -109,8 +109,8 @@ export class SkillComponent implements AfterViewInit, OnInit {
         categoryAxis.renderer.minGridDistance = 60;
         categoryAxis.renderer.labels.template.location = 0.5;
         categoryAxis.renderer.grid.template.strokeOpacity = 0.08;
-        
-         categoryAxis.renderer.labels.template.tooltip = new am4core.Tooltip();
+
+        categoryAxis.renderer.labels.template.tooltip = new am4core.Tooltip();
         categoryAxis.renderer.labels.template.cloneTooltip = false;
         categoryAxis.renderer.labels.template.tooltipText = '{axisLabel}';
         categoryAxis.renderer.labels.template.tooltip.background.opacity = 0.7;
@@ -120,6 +120,11 @@ export class SkillComponent implements AfterViewInit, OnInit {
         categoryAxis.renderer.labels.template.tooltip.setBounds({ x: 0, y: 0, width: 2000, height: 2000 });
         categoryAxis.cursorTooltipEnabled = false;
         categoryAxis.renderer.labels.template.fill = am4core.color("#495C43");
+
+        categoryAxis.renderer.labels.template.adapter.add("textOutput", function (text: any) {
+          console.info(text);
+          return '[font-size: 30px;text-decoration: underline]' + text + '[/]';
+        });
 
         const valueAxis = this.skillTypeChart.yAxes.push(new am4charts.ValueAxis<any>());
         valueAxis.min = 0;
@@ -222,16 +227,21 @@ export class SkillComponent implements AfterViewInit, OnInit {
         categoryAxis.cursorTooltipEnabled = false;
         categoryAxis.renderer.labels.template.fill = am4core.color("#495C43");
 
+        categoryAxis.renderer.labels.template.adapter.add("textOutput", function (text: any) {
+          console.info(text);
+          return '[font-size: 30px;text-decoration: underline]' + text + '[/]';
+        });
+
         const valueAxis = this.skillAcademyTypeChart.yAxes.push(new am4charts.ValueAxis<any>());
         valueAxis.min = 0;
         valueAxis.max = 6;
         valueAxis.renderer.minGridDistance = 20;
-        
+
         const series = this.skillAcademyTypeChart.series.push(new am4charts.RadarColumnSeries());
         series.dataFields.categoryX = 'category';
         series.dataFields.valueY = 'power';
         series.tooltipText = '{categoryLabel}';
-        
+
 
         series.columns.template.events.on("hit", (ev) => {
           if (ev && ev.target && ev.target.dataItem) {
