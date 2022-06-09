@@ -35,7 +35,7 @@ git clone https://github.com/SiropOps/ch.portfolio.git
 cd ch.portfolio
 docker run -i -t --rm=true -v ~/:/data node:14.15 /bin/bash
 cd /data/ch.portfolio/
-npm install && npm run build --prod
+npm install && npm run build --prod --outputHashing=all
 exit
 docker image build -t registry.siroz.ovh/fuzati .
 docker login registry.siroz.ovh
