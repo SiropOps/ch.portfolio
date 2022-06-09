@@ -25,3 +25,30 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Deploy
+
+```
+-- ON Big server
+git clone https://github.com/SiropOps/ch.portfolio.git
+cd ch.portfolio
+docker run -i -t --rm=true -v ~/:/data node:14.15 /bin/bash
+cd /data/ch.portfolio/
+npm install && npm run build --prod
+exit
+docker image build -t registry.siroz.ovh/fuzati .
+docker login registry.siroz.ovh
+docker push registry.siroz.ovh/fuzati
+cd && sudo rm -rf ch.portfolio
+-- ON VPS
+docker ps
+docker stop fuzati
+docker rm fuzati
+docker container prune --force && docker network prune  --force && docker image prune -a --force && docker volume prune --force
+
+git clone https://github.com/SiropOps/ch.portfolio.git
+cd ch.portfolio
+docker-compose up -d
+cd && sudo rm -rf ch.portfolio
+```
