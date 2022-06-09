@@ -9,11 +9,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CommonModule } from '@angular/common';
+import { CaiComponent } from './cai/cai.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SkillComponent
+    SkillComponent,
+    CaiComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -23,7 +27,10 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     NgbModule,
     AgGridModule.withComponents([]),
     BrowserAnimationsModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    AccordionModule.forRoot(),
+    CommonModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
