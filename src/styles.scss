@@ -6,3 +6,8 @@
 .ampopup-inside {
   background-color: rgba(255, 255, 255, 1);
 }
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
